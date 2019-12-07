@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <title>我是标题</title>
+    <style>
+        html,body{
+            width:100%;height:100%;
+        }
+       .box{
+           width:800px;height:60%;
+           border:1px solid #000;
+           position: absolute;left:0;top:0;right:0;bottom: 0;margin:auto;
+       }
+        .key{
+            width:12.5%;height:100%;
+            border:1px solid #000;
+            float:left;
+            box-sizing: border-box;
+            text-align: center;
+            font-size: 30px;
+        }
+        .key:nth-child(2n){
+            background: #888;
+        }
+    </style>
+    <script>
+        window.onload=function (ev) {
+            var divs=document.querySelectorAll(".key");
+            var hash={
+                49:{
+                    div:0
+                },
+                50:{
+                    div:1
+                },
+                51:{
+                    div:2
+                },
+                52:{
+                    div:3
+                },
+                53:{
+                    div:4
+                },
+                54:{
+                    div:5
+                },
+                55:{
+                    div:6
+                },
+                56:{
+                    div:7
+                }
+
+            }
+
+            document.onkeydown=function (e) {
+
+                divs[hash[e.keyCode].div].style.boxShadow="0 0 10px #000";
+            }
+            document.onkeyup=function (e) {
+
+                divs[hash[e.keyCode].div].style.boxShadow="none";
+            }
+        }
+
+    </script>
+</head>
+<body>
+
+
+  <div class="box">
+      <div class="key">0</div>
+      <div class="key">1</div>
+      <div class="key">2</div>
+      <div class="key">3</div>
+      <div class="key">4</div>
+      <div class="key">5</div>
+      <div class="key">6</div>
+      <div class="key">7</div>
+
+  </div>
+</body>
+</html>
