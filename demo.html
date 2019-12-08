@@ -4,97 +4,11 @@
     <meta charset="UTF-8">
 
     <title>我是标题</title>
-    <style>
-        html,body{
-            width:100%;height:100%;
-        }
-       .box{
-           width:800px;height:60%;
-           border:1px solid #000;
-           position: absolute;left:0;top:0;right:0;bottom: 0;margin:auto;
-       }
-        .key{
-            width:12.5%;height:100%;
-            border:1px solid #000;
-            float:left;
-            box-sizing: border-box;
-            text-align: center;
-            font-size: 30px;
-        }
-        .key:nth-child(2n){
-            background: #888;
-        }
-    </style>
-    <script>
-        window.onload=function (ev) {
-            // 音频
-            var divs=document.querySelectorAll(".key");
 
-            var hash={
-                49:{
-                    div:0,audio:400+400*(1/8)
-                },
-                50:{
-                    div:1,audio:400+400*(2/8)
-                },
-                51:{
-                    div:2,audio:400+400*(3/8)
-                },
-                52:{
-                    div:3,audio:400+400*(4/8)
-                },
-                53:{
-                    div:4,audio:400+400*(5/8)
-                },
-                54:{
-                    div:5,audio:400+400*(6/8)
-                },
-                55:{
-                    div:6,audio:400+400*(7/8)
-                },
-                56:{
-                    div:7,audio:400+400*(8/8)
-                }
-
-            }
-
-
-            var audio=new AudioContext()
-            var os
-            var flag=true
-
-            document.onkeydown=function (e) {
-                if(!flag){
-                    return;
-                }
-                flag=false
-                os=audio.createOscillator()
-                var as=audio.createAnalyser();
-                var gain=audio.createGain()
-
-                os.connect(as)
-                os.connect(gain)
-                gain.connect(audio.destination)
-
-                os.frequency.setValueAtTime(hash[e.keyCode].audio,audio.currentTime);
-                os.start(0)
-
-                divs[hash[e.keyCode].div].style.boxShadow="0 0 10px #000";
-            }
-
-
-            document.onkeyup=function (e) {
-
-                flag=true;
-                os.stop(audio.currentTime)
-                divs[hash[e.keyCode].div].style.boxShadow="none";
-            }
-        }
-
-    </script>
+    <link rel="stylesheet" href="demo.css">
+    <script src="demo.js"></script>
 </head>
 <body>
-
 
   <div class="box">
       <div class="key">0</div>
